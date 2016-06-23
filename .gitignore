@@ -1,0 +1,6 @@
+*.py[cod]
+*.pid
+*.db
+__pycache__/
+project/public/
+tests/public/

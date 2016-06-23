@@ -1,0 +1,7 @@
+{
+  "name": "Django project template",
+  "description": "Django project template",
+  "image": "heroku/python",
+  "keywords": ["python", "django"],
+  "addons": ["heroku-postgresql"]
+}
