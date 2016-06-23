@@ -1,5 +1,5 @@
 import os
-from project.settings.base import *  # NOQA
+from project.settings import *  # NOQA
 
 TEST_APP_DIR = os.path.dirname(__file__)
 

@@ -1,5 +1,8 @@
 import os
+import sys
 import dj_database_url
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 
 def path(*args):
@@ -144,3 +147,8 @@ LOGGING = {
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 SCRIPT_JS_PREFIX = ''
+
+try:
+    from local import *  # NOQA
+except ImportError:
+    pass
