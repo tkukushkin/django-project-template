@@ -2,5 +2,6 @@
 *.pid
 *.db
 __pycache__/
-project/public/
+project/public/static
+project/public/media
 tests/public/
