@@ -5,7 +5,7 @@ import dj_database_url
 def path(*args):
     return os.path.join(os.path.dirname(__file__), '..', *args)
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
