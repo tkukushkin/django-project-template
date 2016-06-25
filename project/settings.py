@@ -1,12 +1,11 @@
 import os
 import sys
 import dj_database_url
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+import importlib
 
 
 def path(*args):
-    return os.path.join(os.path.dirname(__file__), *args)
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), *args))
 
 DEBUG = False
 
@@ -148,7 +147,12 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 SCRIPT_JS_PREFIX = ''
 
-try:
-    from local import *  # NOQA
-except ImportError:
-    pass
+additional_settings_file = os.environ.get('DJANGO_ADDITIONAL_SETTINGS_FILE')
+if additional_settings_file:
+    additional_settings_file, ext = additional_settings_file.rsplit('.', 1)
+    assert ext == 'py'
+    directory, module_name = additional_settings_file.rsplit('/', 1)
+    directory = path('..', directory)
+    if directory not in sys.path:
+        sys.path.append(directory)
+    globals().update(importlib.import_module(module_name).__dict__)
